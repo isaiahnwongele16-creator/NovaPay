@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>NovaPay</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- =====================================
+     SPLASH SCREEN
+===================================== -->
+
+<div id="splash" class="splash">
+
+    <div class="logo">
+        N
+    </div>
+
+    <h1>NovaPay</h1>
+
+    <p>Simple. Fast. Secure.</p>
+
+</div>
+
+
+<!-- =====================================
+     AUTHENTICATION
+===================================== -->
+
+<div id="auth" class="auth hidden">
+
+    <!-- LOGIN -->
+
+    <div id="loginScreen" class="auth-card">
+
+        <div class="auth-logo">
+            N
+        </div>
+
+        <h1>Welcome back</h1>
+
+        <p class="subtitle">
+            Login to your NovaPay account
+        </p>
+
+        <label>Phone Number</label>
+
+        <input
+            id="loginPhone"
+            type="tel"
+            maxlength="11"
+            inputmode="numeric"
+            placeholder="08012345678"
+        >
+
+        <label>Password</label>
+
+        <div class="password-box">
+
+            <input
+                id="loginPassword"
+                type="password"
+                maxlength="6"
+                inputmode="numeric"
+                placeholder="6-digit password"
+            >
+
+            <button
+                type="button"
+                onclick="showPassword('loginPassword')"
+            >
+                👁
+            </button>
+
+        </div>
+
+        <button
+            class="main-btn"
+            onclick="login()"
+        >
+            Login
+        </button>
+
+        <p class="switch-text">
+            Don't have an account?
+            <button onclick="showRegister()">
+                Register
+            </button>
+        </p>
+
+    </div>
+
+
+    <!-- REGISTER -->
+
+    <div
+        id="registerScreen"
+        class="auth-card hidden"
+    >
+
+        <div class="auth-logo">
+            N
+        </div>
+
+        <h1>Create Account</h1>
+
+        <p class="subtitle">
+            Create your NovaPay account
+        </p>
+
+        <label>Full Name</label>
+
+        <input
+            id="regName"
+            type="text"
+            placeholder="Enter your full name"
+        >
+
+        <label>Phone Number</label>
+
+        <input
+            id="regPhone"
+            type="tel"
+            maxlength="11"
+            inputmode="numeric"
+            placeholder="08012345678"
+        >
+
+        <label>Password</label>
+
+        <div class="password-box">
+
+            <input
+                id="regPassword"
+                type="password"
+                maxlength="6"
+                inputmode="numeric"
+                placeholder="Create 6-digit password"
+            >
+
+            <button
+                type="button"
+                onclick="showPassword('regPassword')"
+            >
+                👁
+            </button>
+
+        </div>
+
+        <label>Confirm Password</label>
+
+        <input
+            id="regConfirm"
+            type="password"
+            maxlength="6"
+            inputmode="numeric"
+            placeholder="Confirm 6-digit password"
+        >
+
+        <label>Transaction PIN</label>
+
+        <input
+            id="regPin"
+            type="password"
+            maxlength="4"
+            inputmode="numeric"
+            placeholder="Create 4-digit PIN"
+        >
+
+        <label>Confirm Transaction PIN</label>
+
+        <input
+            id="regConfirmPin"
+            type="password"
+            maxlength="4"
+            inputmode="numeric"
+            placeholder="Confirm 4-digit PIN"
+        >
+
+        <button
+            class="main-btn"
+            onclick="register()"
+        >
+            Create Account
+        </button>
+
+        <p class="switch-text">
+
+            Already have an account?
+
+            <button onclick="showLogin()">
+                Login
+            </button>
+
+        </p>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================
+     MAIN APP
+===================================== -->
+
+<div id="app" class="app hidden">
+
+    <!-- HEADER -->
+
+    <header class="top-header">
+
+        <div class="user-area">
+
+            <div
+                id="avatar"
+                class="avatar"
+            >
+                N
+            </div>
+
+            <div>
+
+                <small>Good day</small>
+
+                <strong id="userName">
+                    User
+                </strong>
+
+            </div>
+
+        </div>
+
+        <div class="header-actions">
+
+            <button onclick="openNotifications()">
+                🔔
+            </button>
+
+            <button onclick="toggleDark()">
+                🌙
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- PAGES -->
+
+    <main>
+
+        <!-- HOME -->
+
+        <section
+            id="homePage"
+            class="page"
+        >
+
+            <!-- BALANCE CARD -->
+
+            <div class="balance-card">
+
+                <div class="balance-top">
+
+                    <span>
+                        Available Balance
+                    </span>
+
+                    <button
+                        id="balanceEye"
+                        onclick="hideBalance()"
+                    >
+                        👁
+                    </button>
+
+                </div>
+
+                <h1 id="balance">
+                    ₦125,450.00
+                </h1>
+
+                <div class="balance-actions">
+
+                    <button onclick="deposit()">
+                        <span>＋</span>
+                        Add Money
+                    </button>
+
+                    <button onclick="transfer()">
+                        <span>↗</span>
+                        Transfer
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- QUICK SERVICES -->
+
+            <div class="section-title">
+
+                <h2>Services</h2>
+
+                <button onclick="allServices()">
+                    See all
+                </button>
+
+            </div>
+
+
+            <div class="services-grid">
+
+                <button onclick="transfer()">
+                    <span class="service-icon">
+                        ↗
+                    </span>
+                    <small>Transfer</small>
+                </button>
+
+                <button onclick="airtime()">
+                    <span class="service-icon">
+                        📞
+                    </span>
+                    <small>Airtime</small>
+                </button>
+
+                <button onclick="dataPage()">
+                    <span class="service-icon">
+                        📶
+                    </span>
+                    <small>Data</small>
+                </button>
+
+                <button onclick="electricity()">
+                    <span class="service-icon">
+                        💡
+                    </span>
+                    <small>Electricity</small>
+                </button>
+
+                <button onclick="tv()">
+                    <span class="service-icon">
+                        📺
+                    </span>
+                    <small>TV</small>
+                </button>
+
+                <button onclick="cards()">
+                    <span class="service-icon">
+                        💳
+                    </span>
+                    <small>Cards</small>
+                </button>
+
+                <button onclick="beneficiaries()">
+                    <span class="service-icon">
+                        👥
+                    </span>
+                    <small>People</small>
+                </button>
+
+                <button onclick="rewards()">
+                    <span class="service-icon">
+                        🎁
+                    </span>
+                    <small>Rewards</small>
+                </button>
+
+            </div>
+
+
+            <!-- TRANSACTIONS -->
+
+            <div class="section-title">
+
+                <h2>Recent Transactions</h2>
+
+                <button onclick="historyPage()">
+                    See all
+                </button>
+
+            </div>
+
+            <div
+                id="transactions"
+                class="transactions"
+            >
+            </div>
+
+        </section>
+
+
+        <!-- HISTORY -->
+
+        <section
+            id="historyPage"
+            class="page hidden"
+        >
+
+            <div class="page-header">
+
+                <h1>Transaction History</h1>
+
+            </div>
+
+            <div
+                id="fullHistory"
+                class="transactions"
+            >
+            </div>
+
+        </section>
+
+
+        <!-- CARDS PAGE -->
+
+        <section
+            id="cardsPage"
+            class="page hidden"
+        >
+
+            <div class="page-header">
+
+                <h1>Cards</h1>
+
+            </div>
+
+            <div class="empty-page">
+
+                <div>💳</div>
+
+                <h2>Your Cards</h2>
+
+                <p>
+                    Manage your NovaPay cards.
+                </p>
+
+                <button
+                    class="main-btn"
+                    onclick="cards()"
+                >
+                    View Card
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- PROFILE -->
+
+        <section
+            id="profilePage"
+            class="page hidden"
+        >
+
+            <div class="profile-head">
+
+                <div
+                    id="profileAvatar"
+                    class="profile-avatar"
+                >
+                    N
+                </div>
+
+                <h2 id="profileName">
+                    User
+                </h2>
+
+                <p id="profilePhone">
+                    +234
+                </p>
+
+            </div>
+
+
+            <div class="settings-list">
+
+                <button onclick="accountSettings()">
+
+                    <span>👤</span>
+
+                    <div>
+                        <strong>Account</strong>
+                        <small>
+                            Personal information
+                        </small>
+                    </div>
+
+                    <b>›</b>
+
+                </button>
+
+
+                <button onclick="securitySettings()">
+
+                    <span>🔐</span>
+
+                    <div>
+                        <strong>Security</strong>
+                        <small>
+                            Password and PIN
+                        </small>
+                    </div>
+
+                    <b>›</b>
+
+                </button>
+
+
+                <button onclick="toggleDark()">
+
+                    <span>🌙</span>
+
+                    <div>
+                        <strong>Appearance</strong>
+                        <small>
+                            Dark / Light mode
+                        </small>
+                    </div>
+
+                    <b>›</b>
+
+                </button>
+
+
+                <button onclick="helpCenter()">
+
+                    <span>❓</span>
+
+                    <div>
+                        <strong>Help Center</strong>
+                        <small>
+                            Get help
+                        </small>
+                    </div>
+
+                    <b>›</b>
+
+                </button>
+
+
+                <button onclick="logout()">
+
+                    <span>🚪</span>
+
+                    <div>
+                        <strong>Logout</strong>
+                        <small>
+                            Sign out of account
+                        </small>
+                    </div>
+
+                    <b>›</b>
+
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =====================================
+         BOTTOM NAVIGATION
+    ====================================== -->
+
+    <nav class="bottom-nav">
+
+        <button
+            class="active"
+            onclick="home()"
+        >
+            <span>⌂</span>
+            <small>Home</small>
+        </button>
+
+        <button onclick="allServices()">
+            <span>▦</span>
+            <small>Services</small>
+        </button>
+
+        <button onclick="cards()">
+            <span>▣</span>
+            <small>Cards</small>
+        </button>
+
+        <button onclick="historyPage()">
+            <span>↔</span>
+            <small>History</small>
+        </button>
+
+        <button onclick="openProfile()">
+            <span>♙</span>
+            <small>Me</small>
+        </button>
+
+    </nav>
+
+</div>
+
+
+<!-- =====================================
+     MODAL
+===================================== -->
+
+<div
+    id="modal"
+    class="modal hidden"
+>
+
+    <div class="modal-box">
+
+        <button
+            class="modal-close"
+            onclick="closeModal()"
+        >
+            ×
+        </button>
+
+        <div id="modalBody"></div>
+
+    </div>
+
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>

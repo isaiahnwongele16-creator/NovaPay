@@ -1,0 +1,1461 @@
+/* =========================================
+   NOVAPAY BANKING DEMO
+   STYLE.CSS — PART 1 OF 2
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --green: #00b875;
+    --green-dark: #009e65;
+    --green-light: #e8fff6;
+    --background: #f5f7f8;
+    --card: #ffffff;
+    --text: #15191c;
+    --muted: #7b858b;
+    --border: #e7ebed;
+    --danger: #e53935;
+    --success: #00a86b;
+    --shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Arial,
+        sans-serif;
+
+    background: var(--background);
+    color: var(--text);
+
+    min-height: 100vh;
+
+    transition:
+        background 0.25s ease,
+        color 0.25s ease;
+}
+
+button,
+input,
+select {
+    font: inherit;
+}
+
+button {
+    border: none;
+    cursor: pointer;
+}
+
+input,
+select {
+    outline: none;
+}
+
+.hidden {
+    display: none !important;
+}
+
+
+/* =========================================
+   SPLASH SCREEN
+========================================= */
+
+.splash {
+    position: fixed;
+    inset: 0;
+
+    background: var(--green);
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    color: white;
+
+    z-index: 9999;
+
+    animation:
+        splashFade
+        0.5s ease
+        1.8s
+        forwards;
+}
+
+.splash .logo,
+.auth-logo {
+    width: 74px;
+    height: 74px;
+
+    border-radius: 22px;
+
+    background: white;
+    color: var(--green);
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: 42px;
+    font-weight: 900;
+
+    box-shadow:
+        0 12px 30px
+        rgba(0, 0, 0, 0.15);
+}
+
+.splash h1 {
+    margin-top: 18px;
+
+    font-size: 30px;
+    font-weight: 800;
+}
+
+.splash p {
+    margin-top: 6px;
+
+    opacity: 0.9;
+
+    font-size: 14px;
+}
+
+@keyframes splashFade {
+    to {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+
+/* =========================================
+   AUTHENTICATION
+========================================= */
+
+.auth {
+    min-height: 100vh;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    padding: 25px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #eafff7,
+            #f5f7f8
+        );
+}
+
+.auth-card {
+    width: 100%;
+    max-width: 430px;
+
+    background: var(--card);
+
+    border-radius: 24px;
+
+    padding: 32px 26px;
+
+    box-shadow: var(--shadow);
+
+    animation:
+        cardIn
+        0.35s
+        ease;
+}
+
+@keyframes cardIn {
+
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+.auth-logo {
+    width: 55px;
+    height: 55px;
+
+    border-radius: 17px;
+
+    font-size: 30px;
+
+    margin-bottom: 20px;
+}
+
+.auth-card h1 {
+    font-size: 27px;
+
+    margin-bottom: 6px;
+}
+
+.subtitle {
+    color: var(--muted);
+
+    font-size: 14px;
+
+    margin-bottom: 25px;
+}
+
+.auth-card label {
+    display: block;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    margin-bottom: 7px;
+    margin-top: 15px;
+}
+
+.auth-card input {
+    width: 100%;
+
+    height: 50px;
+
+    border:
+        1px solid
+        var(--border);
+
+    background: #fafbfb;
+
+    border-radius: 12px;
+
+    padding: 0 14px;
+
+    font-size: 15px;
+
+    transition: 0.2s;
+}
+
+.auth-card input:focus {
+    border-color:
+        var(--green);
+
+    background: white;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(0, 184, 117, 0.1);
+}
+
+
+/* =========================================
+   PASSWORD BOX
+========================================= */
+
+.password-box {
+    display: flex;
+
+    border:
+        1px solid
+        var(--border);
+
+    background: #fafbfb;
+
+    border-radius: 12px;
+
+    overflow: hidden;
+}
+
+.password-box input {
+    border: none;
+
+    background: transparent;
+
+    border-radius: 0;
+
+    flex: 1;
+}
+
+.password-box input:focus {
+    box-shadow: none;
+}
+
+.password-box button {
+    width: 48px;
+
+    background: transparent;
+
+    font-size: 17px;
+}
+
+
+/* =========================================
+   MAIN BUTTON
+========================================= */
+
+.main-btn {
+    width: 100%;
+
+    min-height: 50px;
+
+    margin-top: 20px;
+
+    border-radius: 12px;
+
+    background: var(--green);
+
+    color: white;
+
+    font-weight: 700;
+
+    font-size: 15px;
+
+    transition: 0.2s;
+}
+
+.main-btn:hover {
+    background: var(--green-dark);
+}
+
+.main-btn:active {
+    transform: scale(0.98);
+}
+
+.switch-text {
+    text-align: center;
+
+    color: var(--muted);
+
+    font-size: 14px;
+
+    margin-top: 20px;
+}
+
+.switch-text button {
+    background: transparent;
+
+    color: var(--green);
+
+    font-weight: 700;
+
+    margin-left: 3px;
+}
+
+
+/* =========================================
+   MAIN APP
+========================================= */
+
+.app {
+    min-height: 100vh;
+
+    padding-bottom: 90px;
+}
+
+.top-header {
+    max-width: 1100px;
+
+    margin: auto;
+
+    padding:
+        20px
+        22px
+        12px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+}
+
+.user-area {
+    display: flex;
+
+    align-items: center;
+
+    gap: 11px;
+}
+
+.avatar {
+    width: 44px;
+    height: 44px;
+
+    border-radius: 50%;
+
+    background:
+        var(--green-light);
+
+    color: var(--green);
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    font-weight: 800;
+}
+
+.user-area small {
+    display: block;
+
+    color: var(--muted);
+
+    font-size: 12px;
+
+    margin-bottom: 2px;
+}
+
+.user-area strong {
+    font-size: 16px;
+}
+
+.header-actions {
+    display: flex;
+
+    gap: 7px;
+}
+
+.header-actions button {
+    width: 40px;
+    height: 40px;
+
+    border-radius: 50%;
+
+    background: var(--card);
+
+    box-shadow:
+        0 3px 15px
+        rgba(0,0,0,0.05);
+
+    font-size: 17px;
+}
+
+
+/* =========================================
+   PAGE
+========================================= */
+
+main {
+    max-width: 1100px;
+
+    margin: auto;
+
+    padding: 0 20px;
+}
+
+.page {
+    animation:
+        pageIn
+        0.25s
+        ease;
+}
+
+@keyframes pageIn {
+
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+/* =========================================
+   BALANCE CARD
+========================================= */
+
+.balance-card {
+    background:
+        linear-gradient(
+            135deg,
+            #00b875,
+            #00a968
+        );
+
+    color: white;
+
+    border-radius: 22px;
+
+    padding: 22px;
+
+    box-shadow:
+        0 12px 30px
+        rgba(0, 184, 117, 0.18);
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+.balance-card::after {
+    content: "";
+
+    position: absolute;
+
+    width: 180px;
+    height: 180px;
+
+    border-radius: 50%;
+
+    right: -70px;
+    top: -70px;
+
+    background:
+        rgba(255,255,255,0.08);
+}
+
+.balance-top {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    position: relative;
+
+    z-index: 2;
+}
+
+.balance-top span {
+    font-size: 13px;
+
+    opacity: 0.85;
+}
+
+.balance-top button {
+    background: transparent;
+
+    color: white;
+
+    font-size: 18px;
+}
+
+.balance-card h1 {
+    font-size: 31px;
+
+    margin:
+        10px 0 22px;
+
+    position: relative;
+
+    z-index: 2;
+}
+
+.balance-actions {
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 10px;
+
+    position: relative;
+
+    z-index: 2;
+}
+
+.balance-actions button {
+    min-height: 44px;
+
+    border-radius: 11px;
+
+    background:
+        rgba(255,255,255,0.15);
+
+    color: white;
+
+    font-weight: 600;
+
+    backdrop-filter:
+        blur(10px);
+}
+
+.balance-actions span {
+    margin-right: 5px;
+
+    font-size: 18px;
+}
+
+
+/* =========================================
+   SECTION TITLE
+========================================= */
+
+.section-title {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin:
+        28px 0 14px;
+}
+
+.section-title h2 {
+    font-size: 17px;
+}
+
+.section-title button {
+    background: transparent;
+
+    color: var(--green);
+
+    font-size: 13px;
+
+    font-weight: 700;
+}
+
+
+/* =========================================
+   SERVICES
+========================================= */
+
+.services-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 10px;
+}
+
+.services-grid button {
+    background: var(--card);
+
+    min-height: 95px;
+
+    border-radius: 16px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 8px;
+
+    box-shadow:
+        0 3px 15px
+        rgba(0,0,0,0.035);
+
+    color: var(--text);
+
+    transition: 0.2s;
+}
+
+.services-grid button:hover {
+    transform:
+        translateY(-2px);
+}
+
+.service-icon {
+    width: 43px;
+    height: 43px;
+
+    border-radius: 13px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    background:
+        var(--green-light);
+
+    color: var(--green);
+
+    font-size: 20px;
+}
+
+.services-grid small {
+    font-size: 11px;
+
+    font-weight: 600;
+}
+
+
+/* =========================================
+   TRANSACTIONS
+========================================= */
+
+.transactions {
+    background: var(--card);
+
+    border-radius: 17px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 3px 15px
+        rgba(0,0,0,0.035);
+}
+
+.transaction {
+    min-height: 73px;
+
+    padding:
+        12px 14px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 11px;
+
+    border-bottom:
+        1px solid
+        var(--border);
+}
+
+.transaction:last-child {
+    border-bottom: none;
+}
+
+.transaction-icon {
+    width: 40px;
+    height: 40px;
+
+    border-radius: 50%;
+
+    background: #f1f3f4;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    font-size: 17px;
+}
+
+.transaction-icon.in {
+    background:
+        var(--green-light);
+
+    color: var(--green);
+}
+
+.transaction-info {
+    flex: 1;
+
+    min-width: 0;
+}
+
+.transaction-info strong {
+    display: block;
+
+    font-size: 13px;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+}
+
+.transaction-info small {
+    display: block;
+
+    color: var(--muted);
+
+    font-size: 11px;
+
+    margin-top: 4px;
+}
+
+.money-in {
+    color: var(--success);
+
+    font-size: 13px;
+}
+
+.money-out {
+    color: var(--danger);
+
+    font-size: 13px;
+}
+
+/* =========================================
+   NOVAPAY BANKING DEMO
+   STYLE.CSS — PART 2 OF 2
+========================================= */
+
+
+/* =========================================
+   BOTTOM NAVIGATION
+========================================= */
+
+.bottom-nav {
+    position: fixed;
+
+    left: 50%;
+    bottom: 0;
+
+    transform: translateX(-50%);
+
+    width: 100%;
+    max-width: 700px;
+
+    height: 72px;
+
+    background: var(--card);
+
+    border-top:
+        1px solid
+        var(--border);
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(5, 1fr);
+
+    z-index: 100;
+
+    box-shadow:
+        0 -5px 25px
+        rgba(0,0,0,0.06);
+}
+
+.bottom-nav button {
+    background: transparent;
+
+    color: var(--muted);
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 4px;
+}
+
+.bottom-nav button span {
+    font-size: 21px;
+}
+
+.bottom-nav button small {
+    font-size: 10px;
+}
+
+.bottom-nav button.active {
+    color: var(--green);
+
+    font-weight: 700;
+}
+
+
+/* =========================================
+   PAGE HEADER
+========================================= */
+
+.page-header {
+    padding:
+        15px 0 20px;
+}
+
+.page-header h1 {
+    font-size: 24px;
+}
+
+
+/* =========================================
+   PROFILE
+========================================= */
+
+.profile-head {
+    text-align: center;
+
+    padding:
+        20px 10px 25px;
+}
+
+.profile-avatar {
+    width: 80px;
+    height: 80px;
+
+    margin: auto;
+
+    border-radius: 50%;
+
+    background:
+        var(--green-light);
+
+    color: var(--green);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 30px;
+
+    font-weight: 800;
+}
+
+.profile-head h2 {
+    margin-top: 12px;
+
+    font-size: 20px;
+}
+
+.profile-head p {
+    color: var(--muted);
+
+    font-size: 13px;
+
+    margin-top: 4px;
+}
+
+
+/* =========================================
+   SETTINGS
+========================================= */
+
+.settings-list {
+    background: var(--card);
+
+    border-radius: 18px;
+
+    overflow: hidden;
+}
+
+.settings-list button {
+    width: 100%;
+
+    min-height: 68px;
+
+    background: transparent;
+
+    display: flex;
+
+    align-items: center;
+
+    text-align: left;
+
+    gap: 13px;
+
+    padding:
+        10px 15px;
+
+    border-bottom:
+        1px solid
+        var(--border);
+
+    color: var(--text);
+}
+
+.settings-list button:last-child {
+    border-bottom: none;
+}
+
+.settings-list button > span {
+    width: 40px;
+    height: 40px;
+
+    border-radius: 12px;
+
+    background:
+        var(--green-light);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+.settings-list button div {
+    flex: 1;
+}
+
+.settings-list strong {
+    display: block;
+
+    font-size: 13px;
+}
+
+.settings-list small {
+    display: block;
+
+    color: var(--muted);
+
+    font-size: 11px;
+
+    margin-top: 3px;
+}
+
+.settings-list b {
+    color: var(--muted);
+
+    font-size: 20px;
+}
+
+
+/* =========================================
+   EMPTY PAGE
+========================================= */
+
+.empty-page {
+    background: var(--card);
+
+    border-radius: 20px;
+
+    padding:
+        45px 20px;
+
+    text-align: center;
+}
+
+.empty-page > div {
+    font-size: 50px;
+
+    margin-bottom: 15px;
+}
+
+.empty-page h2 {
+    font-size: 20px;
+}
+
+.empty-page p {
+    color: var(--muted);
+
+    font-size: 13px;
+
+    margin-top: 8px;
+}
+
+
+/* =========================================
+   MODAL
+========================================= */
+
+.modal {
+    position: fixed;
+
+    inset: 0;
+
+    background:
+        rgba(0,0,0,0.5);
+
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content: center;
+
+    z-index: 1000;
+
+    padding: 0;
+}
+
+.modal-box {
+    width: 100%;
+
+    max-width: 550px;
+
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    background: var(--card);
+
+    border-radius:
+        25px 25px 0 0;
+
+    padding:
+        25px 20px 30px;
+
+    position: relative;
+
+    animation:
+        modalUp
+        0.25s
+        ease;
+}
+
+@keyframes modalUp {
+
+    from {
+        transform:
+            translateY(100%);
+    }
+
+    to {
+        transform:
+            translateY(0);
+    }
+
+}
+
+.modal-close {
+    position: absolute;
+
+    right: 17px;
+    top: 15px;
+
+    width: 35px;
+    height: 35px;
+
+    border-radius: 50%;
+
+    background: #f0f2f3;
+
+    color: var(--text);
+
+    font-size: 22px;
+}
+
+.modal-box h2 {
+    font-size: 21px;
+
+    margin-bottom: 7px;
+
+    padding-right: 40px;
+}
+
+.modal-box p {
+    color: var(--muted);
+
+    font-size: 13px;
+
+    line-height: 1.5;
+
+    margin-bottom: 15px;
+}
+
+.modal-input {
+    width: 100%;
+
+    height: 50px;
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius: 12px;
+
+    background:
+        var(--background);
+
+    padding:
+        0 14px;
+
+    margin:
+        6px 0;
+
+    color: var(--text);
+}
+
+.modal-input:focus {
+    border-color:
+        var(--green);
+
+    box-shadow:
+        0 0 0 3px
+        rgba(0,184,117,0.1);
+}
+
+
+/* =========================================
+   BANK CARD
+========================================= */
+
+.bank-card {
+    min-height: 190px;
+
+    border-radius: 20px;
+
+    padding: 24px;
+
+    margin:
+        20px 0;
+
+    background:
+        linear-gradient(
+            135deg,
+            #00b875,
+            #006d4d
+        );
+
+    color: white;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: space-between;
+
+    box-shadow:
+        0 12px 30px
+        rgba(0,0,0,0.15);
+}
+
+.bank-card h2 {
+    letter-spacing: 3px;
+
+    font-size: 20px;
+}
+
+.bank-card span {
+    font-size: 12px;
+
+    font-weight: 600;
+}
+
+
+/* =========================================
+   QR CODE
+========================================= */
+
+.qr {
+    width: 170px;
+    height: 170px;
+
+    margin:
+        20px auto;
+
+    background: white;
+
+    border: 8px solid #111;
+
+    color: #111;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 100px;
+}
+
+
+/* =========================================
+   DARK MODE
+========================================= */
+
+body.dark {
+    --background: #0d1110;
+    --card: #151b19;
+    --text: #f1f5f3;
+    --muted: #8d9893;
+    --border: #252d2a;
+    --green-light: #12382c;
+}
+
+body.dark .auth {
+    background:
+        linear-gradient(
+            145deg,
+            #0d211a,
+            #0d1110
+        );
+}
+
+body.dark .auth-card input,
+body.dark .password-box {
+    background: #101513;
+
+    border-color:
+        var(--border);
+
+    color: white;
+}
+
+body.dark .auth-card input:focus {
+    background: #121917;
+}
+
+body.dark .header-actions button {
+    background:
+        var(--card);
+}
+
+body.dark .transaction-icon {
+    background:
+        #202725;
+}
+
+body.dark .modal-close {
+    background:
+        #252d2a;
+
+    color: white;
+}
+
+body.dark .modal-input {
+    background:
+        #101513;
+
+    border-color:
+        var(--border);
+
+    color: white;
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (min-width: 600px) {
+
+    .auth-card {
+        padding:
+            40px 35px;
+    }
+
+    .services-grid {
+        grid-template-columns:
+            repeat(4, 1fr);
+    }
+
+    .modal {
+        align-items: center;
+
+        padding: 20px;
+    }
+
+    .modal-box {
+        border-radius: 22px;
+
+        max-height: 85vh;
+    }
+
+}
+
+
+/* =========================================
+   DESKTOP
+========================================= */
+
+@media (min-width: 900px) {
+
+    body {
+        background:
+            #eef2f1;
+    }
+
+    body.dark {
+        background:
+            #090c0b;
+    }
+
+    .app {
+        max-width: 1150px;
+
+        margin: auto;
+
+        background:
+            var(--background);
+
+        min-height: 100vh;
+    }
+
+    .top-header {
+        padding-top: 30px;
+    }
+
+    main {
+        padding:
+            0 30px;
+    }
+
+    .balance-card {
+        padding: 30px;
+    }
+
+    .balance-card h1 {
+        font-size: 38px;
+    }
+
+    .services-grid {
+        grid-template-columns:
+            repeat(8, 1fr);
+    }
+
+    .bottom-nav {
+        border-radius:
+            18px 18px 0 0;
+    }
+
+}
+
+
+/* =========================================
+   LARGE DESKTOP
+========================================= */
+
+@media (min-width: 1200px) {
+
+    .app {
+        box-shadow:
+            0 0 40px
+            rgba(0,0,0,0.05);
+    }
+
+}
+
+
+/* =========================================
+   SMALL PHONES
+========================================= */
+
+@media (max-width: 360px) {
+
+    .auth {
+        padding: 12px;
+    }
+
+    .auth-card {
+        padding:
+            25px 18px;
+    }
+
+    .balance-card {
+        padding: 18px;
+    }
+
+    .balance-card h1 {
+        font-size: 26px;
+    }
+
+    .services-grid {
+        gap: 7px;
+    }
+
+    .services-grid button {
+        min-height: 85px;
+    }
+
+    .service-icon {
+        width: 38px;
+        height: 38px;
+    }
+
+}
